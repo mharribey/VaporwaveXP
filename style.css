@@ -1,0 +1,22 @@
+body {
+  background-color: black;
+  background-size: cover;
+}
+
+html, body {
+  margin:0;
+}
+
+#duration {
+  position: fixed;
+  height:4px;
+  width:0;
+  background-color: white;
+  border-bottom: 1px solid rgb(255,0,255);
+  z-index: 2;
+}
+
+canvas {
+  position: absolute;
+  bottom:0;
+}
