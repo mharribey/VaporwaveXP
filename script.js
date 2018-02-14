@@ -15,6 +15,8 @@ canvas.height = 300;
 canvas.style.top = 0;
 document.body.appendChild(canvas);
 
+var circle = document.getElementById("circle");
+
 var posX = 1,
     posY = 150,
     radius = 6,
@@ -23,7 +25,7 @@ var posX = 1,
 
 function init(){
   var audio = new Audio();
-  audio.src = 'sound.mp3';
+  audio.src = 'sound2.wav';
   audio.controls = true;
   audio.loop = true;
   audio.autoplay = true;
@@ -87,11 +89,22 @@ function animate() {
   camera.position.y += ratio
   camera.position.y -= ratio
 
-  if(fbc_array[512] > 70){
+  if(fbc_array[512] > 90){
     plane.material.color.set("rgb(255,0,255)");
     setTimeout(function(){
       plane.material.color.set("rgb(126,0,126)");
     },100);
+  }
+  if(fbc_array[0] > 230){
+    document.body.style.backgroundColor = "rgb(255,255,255)";
+    scene.background = new THREE.Color(0xffffff);
+    starsMaterial.color.set("rgb(0,0,0)");
+    setTimeout(function(){
+      document.body.style.backgroundColor = "rgb(0,0,0)";
+      scene.background = new THREE.Color(0x000000);
+      starsMaterial.color.set("rgb(255,255,255)");
+
+    },150);
   }
 
   renderer.render(scene, camera);
@@ -106,15 +119,14 @@ function draw(posX,posY,radius){
 
   // draw rect
   context.beginPath();
-  context.fillStyle= "rgb(255,0,255)";
+  context.fillStyle= "transparent";
   context.arc(posX, posY, radius, 0, Math.PI*2, true);
+  context.lineWidth = 8;
+  context.strokeStyle = "rgb(255,0,255)";
   context.closePath();
+
+  context.stroke();
   context.fill();
 
-  context.beginPath();
-  context.fillStyle= "black";
-  context.arc(posX, posY, radius/1.2, 0, Math.PI*2, true);
-  context.closePath();
-  context.fill();
 
 }

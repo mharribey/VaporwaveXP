@@ -4,6 +4,7 @@ document.body.appendChild(renderer.domElement);
 
 var camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 10000);
 var scene = new THREE.Scene();
+scene.background = new THREE.Color(0x000000);
 
 var controls = new THREE.OrbitControls(camera);
 
